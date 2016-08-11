@@ -4,7 +4,7 @@ File::ChangeNotify - Watch for changes to files, cross-platform style
 
 # VERSION
 
-version 0.26
+version 0.27
 
 # SYNOPSIS
 
@@ -81,8 +81,9 @@ Dave Rolsky <autarch@urth.org>
 
 - H. Merijn Branch <h.m.brand@xs4all.nl>
 - Karen Etheridge <ether@cpan.org>
+- Norbert Buchmuller <norbi@nix.hu>
 
-# COPYRIGHT AND LICENCE
+# COPYRIGHT AND LICENSE
 
 This software is Copyright (c) 2016 by Dave Rolsky.
 
