@@ -40,8 +40,12 @@ with 'File::ChangeNotify::Watcher';
 
 sub sees_all_events {1}
 
+sub supports_exposing_fds {1}
+
 sub BUILD {
     my $self = shift;
+
+    $self->watch_fds->( $self->_inotify->fileno ) if $self->watch_fds;
 
     $self->_inotify()->blocking( $self->is_blocking() );
 

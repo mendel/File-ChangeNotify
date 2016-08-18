@@ -14,7 +14,7 @@ use Test::More;
 use base 'Exporter';
 
 ## no critic (Modules::ProhibitAutomaticExportation)
-our @EXPORT = qw( run_tests );
+our @EXPORT = qw( run_tests create_file modify_file delete_file );
 ## use critic
 
 our $_DESC;

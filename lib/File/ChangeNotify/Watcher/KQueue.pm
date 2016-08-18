@@ -40,6 +40,8 @@ with 'File::ChangeNotify::Watcher';
 
 sub sees_all_events {0}
 
+sub supports_exposing_fds {0}
+
 sub BUILD {
     my ($self) = @_;
     $self->_watch_dir($_) for @{ $self->directories };

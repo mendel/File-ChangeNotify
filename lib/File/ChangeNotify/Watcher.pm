@@ -70,6 +70,16 @@ has exclude => (
     default => sub { [] },
 );
 
+has watch_fds => (
+    is      => 'ro',
+    isa     => CodeRef,
+);
+
+has unwatch_fds => (
+    is      => 'ro',
+    isa     => CodeRef,
+);
+
 sub BUILD {
     my $self = shift;
 
@@ -153,7 +163,10 @@ objects, but this can be overridden by providing an "event_class" attribute to
 the constructor.
 
 The watcher can operate in a blocking/callback style, or you can simply ask it
-for a list of new events as needed.
+for a list of new events as needed. Some implementations that hook into the
+kernel (Inotify for example) can provide a list of file descriptors to monitor
+via select() - so that more efficient integration to select() based event loops
+is possible.
 
 =head1 METHODS
 
@@ -210,6 +223,14 @@ The default is 2 seconds.
 
 This can be used to change the class used to report events. By
 default, this is L<File::ChangeNotify::Event>.
+
+=item * watch_fds => sub { ... }
+
+FIXME
+
+=item * unwatch_fds => sub { ... }
+
+FIXME
 
 =back
 
