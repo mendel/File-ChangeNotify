@@ -12,7 +12,7 @@ install:
   #- sudo cpanm Linux::Inotify2
   - sudo cpanm --installdeps .
 script:
-  - prove -l -j$(test-jobs) $(test-files)   # parallel testing
+  - prove -l t/
 
 #sudo: false
 #addons:
