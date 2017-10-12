@@ -1,5 +1,6 @@
 ---
 os: osx
+language: generic
 sudo: true
 env:
   global:
@@ -9,6 +10,7 @@ before_install:
   - perl -V
   - curl -L https://cpanmin.us | sudo perl - --sudo App::cpanminus
 install:
+  - sudo brew install perl@5.18
   #- sudo cpanm Linux::Inotify2
   - sudo cpanm --installdeps .
 script:
