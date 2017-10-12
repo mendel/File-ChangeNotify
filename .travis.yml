@@ -1,20 +1,35 @@
 ---
 os: osx
-language: generic
+language: perl
+perl:
+  - '5.24'
 sudo: true
-env:
-  global:
-    - RELEASE_TESTING=1
-    - AUTHOR_TESTING=1
+#env:
+#  global:
+#    - RELEASE_TESTING=1
+#    - AUTHOR_TESTING=1
 before_install:
+  - sudo brew install perl
   - perl -V
   - curl -L https://cpanmin.us | sudo perl - --sudo App::cpanminus
+  - sudo cpanm App::perlbrew
+  - git clone git://github.com/travis-perl/helpers ~/travis-perl-helpers
+  - source ~/travis-perl-helpers/init
+  - build-perl
+  - perl -V
+  - build-dist
+  - cd $BUILD_DIR             # $BUILD_DIR is set by the build-dist command
 install:
-  - sudo brew install perl@5.18
-  #- sudo cpanm Linux::Inotify2
-  - sudo cpanm --installdeps .
+  - cpan-install Linux::Inotify2
+  - cpan-install --deps       # installs prereqs, including recommends
+  - cpan-install --coverage   # installs converage prereqs, if enabled
+before_script:
+  - coverage-setup
 script:
-  - prove -l t/
+  - prove -l -j$(test-jobs) $(test-files)   # parallel testing
+after_success:
+  - coverage-report
+
 
 #sudo: false
 #addons:
