@@ -3,16 +3,13 @@ os: osx
 language: perl
 perl:
   - '5.24'
-sudo: false
+sudo: true
 #env:
 #  global:
 #    - RELEASE_TESTING=1
 #    - AUTHOR_TESTING=1
 before_install:
-  - ls -ld /Users/travis/perl5 || true
-  - ls -ld /Users/travis/perl5/perlbrew || true
-  - ls -ld /Users/travis/perl5/perlbrew/dists || true
-  - ls -l /Users/travis/perl5/perlbrew/dists || true
+  - sudo chown -R $USER /Users/travis/perl5
   - rvm list
   - brew update
   - rvm system
