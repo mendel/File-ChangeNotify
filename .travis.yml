@@ -14,8 +14,10 @@ before_install:
   - rvm system
   - brew install perl
   - perl -V
-  - curl -L https://cpanmin.us | perl - App::cpanminus
-  - cpanm App::perlbrew
+  - curl -L https://install.perlbrew.pl | bash
+  - echo 'PATH=~/perl5/perlbrew/bin:$PATH' >>.bashrc
+  - PATH=~/perl5/perlbrew/bin:$PATH
+  - perlbrew list
   - git clone git://github.com/travis-perl/helpers ~/travis-perl-helpers
   - source ~/travis-perl-helpers/init
   - build-perl
