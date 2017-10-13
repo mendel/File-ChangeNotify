@@ -19,7 +19,7 @@ before_install:
   - echo 'PATH=~/perl5/perlbrew/bin:$PATH' >>.bashrc
   - PATH=~/perl5/perlbrew/bin:$PATH
   - perlbrew list
-  - perlbrew use 5.24
+  - perlbrew switch 5.24
   - git clone git://github.com/travis-perl/helpers ~/travis-perl-helpers
   - source ~/travis-perl-helpers/init
   - build-perl
