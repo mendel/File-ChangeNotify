@@ -20,6 +20,7 @@ before_install:
   - PATH=~/perl5/perlbrew/bin:$PATH
   - perlbrew list
   - perlbrew switch 5.24
+  - perlbrew list
   - git clone git://github.com/travis-perl/helpers ~/travis-perl-helpers
   - source ~/travis-perl-helpers/init
   - build-perl
