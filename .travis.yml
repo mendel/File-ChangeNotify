@@ -9,6 +9,10 @@ sudo: false
 #    - RELEASE_TESTING=1
 #    - AUTHOR_TESTING=1
 before_install:
+  - ls -ld /Users/travis/perl5 || true
+  - ls -ld /Users/travis/perl5/perlbrew || true
+  - ls -ld /Users/travis/perl5/perlbrew/dists || true
+  - ls -l /Users/travis/perl5/perlbrew/dists || true
   - rvm list
   - brew update
   - rvm system
