@@ -16,8 +16,7 @@ before_install:
   - brew install perl
   - perl -V
   - curl -L https://install.perlbrew.pl | bash
-  - echo 'PATH=~/perl5/perlbrew/bin:$PATH' >>.bashrc
-  - PATH=~/perl5/perlbrew/bin:$PATH
+  - echo 'test -f ~/perl5/perlbrew/etc/bashrc && source ~/perl5/perlbrew/etc/bashrc' >>~/.bashrc
   - perlbrew list
   - perlbrew switch 5.24
   - perlbrew list
