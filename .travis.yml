@@ -3,16 +3,16 @@ os: osx
 language: perl
 perl:
   - '5.24'
-sudo: true
+sudo: false
 #env:
 #  global:
 #    - RELEASE_TESTING=1
 #    - AUTHOR_TESTING=1
 before_install:
-  - sudo brew install perl
+  - brew install perl
   - perl -V
-  - curl -L https://cpanmin.us | sudo perl - --sudo App::cpanminus
-  - sudo cpanm App::perlbrew
+  - curl -L https://cpanmin.us | perl - App::cpanminus
+  - cpanm App::perlbrew
   - git clone git://github.com/travis-perl/helpers ~/travis-perl-helpers
   - source ~/travis-perl-helpers/init
   - build-perl
