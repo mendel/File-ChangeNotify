@@ -9,6 +9,9 @@ sudo: false
 #    - RELEASE_TESTING=1
 #    - AUTHOR_TESTING=1
 before_install:
+  - rvm list
+  - brew update
+  - rvm system
   - brew install perl
   - perl -V
   - curl -L https://cpanmin.us | perl - App::cpanminus
