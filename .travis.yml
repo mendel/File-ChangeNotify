@@ -9,15 +9,7 @@ sudo: true
 #    - RELEASE_TESTING=1
 #    - AUTHOR_TESTING=1
 before_install:
-  - sudo chown -R $USER /Users/travis/perl5
-  - rvm list
-  - brew update
-  - rvm system
-  - brew install perl
-  - perl -V
-  - curl -L https://install.perlbrew.pl | bash
-  - source ~/perl5/perlbrew/etc/bashrc
-  - echo 'test -f ~/perl5/perlbrew/etc/bashrc && source ~/perl5/perlbrew/etc/bashrc' >>~/.bashrc
+  - if [ "$TRAVIS_OS_NAME" == "osx" ]; then ./.travis/before_install-osx.sh; fi
   - git clone git://github.com/travis-perl/helpers ~/travis-perl-helpers
   - source ~/travis-perl-helpers/init
   - build-perl
