@@ -1,5 +1,7 @@
 ---
-os: osx
+os:
+  - linux
+  - osx
 sudo: true
 addons:
   apt:
