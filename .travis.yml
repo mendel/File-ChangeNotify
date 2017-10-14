@@ -27,6 +27,10 @@ matrix:
   include:
     - env: COVERAGE=1
       perl: '5.24'
+      os: linux
+    - env: COVERAGE=1
+      perl: '5.24'
+      os: osx
 env:
   global:
     - RELEASE_TESTING=1
