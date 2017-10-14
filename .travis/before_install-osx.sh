@@ -8,7 +8,7 @@ brew update
 brew install perl
 perl -V
 
-if [ ! -O ~/perl5 ]; then
+if [ -d ~/perl5 -a ! -O ~/perl5 ]; then
 	sudo chown -R $USER ~/perl5
 fi
 
