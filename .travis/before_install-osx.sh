@@ -8,8 +8,13 @@ brew update
 brew install perl
 perl -V
 
-if [ ! -O /Users/travis/perl5 ]; then
-	sudo chown -R $USER /Users/travis/perl5
+if [ ! -O ~/perl5 ]; then
+	#sudo chown -R $USER /Users/travis/perl5
+	cp --help
+
+	# Fix permissions of ~/perl5/ - w/o requiring sudo
+	mv ~/perl5 ~/perl5-original
+	cp -a --no-preserve=ownership ~/perl5-original ~/perl5
 fi
 
 curl -L https://install.perlbrew.pl | bash
