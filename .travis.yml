@@ -9,7 +9,7 @@ sudo: true
 #    - RELEASE_TESTING=1
 #    - AUTHOR_TESTING=1
 before_install:
-  - if [ "$TRAVIS_OS_NAME" == "osx" ]; then ./.travis/before_install-osx.sh; fi
+  - if [ "$TRAVIS_OS_NAME" == "osx" ]; then source ./.travis/before_install-osx.sh; fi
   - git clone git://github.com/travis-perl/helpers ~/travis-perl-helpers
   - source ~/travis-perl-helpers/init
   - build-perl
