@@ -45,6 +45,7 @@ before_install:
   - cd $BUILD_DIR             # $BUILD_DIR is set by the build-dist command
 install:
   - if [ "$TRAVIS_OS_NAME" == "linux" ]; then cpan-install Linux::Inotify2; fi
+  - if [ "$TRAVIS_OS_NAME" == "osx" ]; then cpan-install IO::KQueue; fi
   - cpan-install --deps       # installs prereqs, including recommends
   - cpan-install --coverage   # installs converage prereqs, if enabled
 before_script:
