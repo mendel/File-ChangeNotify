@@ -6,7 +6,7 @@ use Test::More;
 use File::ChangeNotify;
 
 sub loads_ok {
-    my ($module, $osname_re) = @_;
+    my ( $module, $osname_re ) = @_;
 
     $osname_re ||= qr/^\Q$^O\E$/;
 
@@ -14,10 +14,13 @@ sub loads_ok {
 
     my $expected_to_succeed = $^O =~ $osname_re;
 
-    my $msg = ( $expected_to_succeed ? "can" : "cannot") . " load $module";
+    my $msg = ( $expected_to_succeed ? 'can' : 'cannot' ) . " load $module";
 
     ## no critic (Subroutines::ProtectPrivateSubs)
-    ok( !($expected_to_succeed xor File::ChangeNotify::_try_load($module)), $msg );
+    ok(
+        !( $expected_to_succeed xor File::ChangeNotify::_try_load($module) ),
+        $msg
+    );
 }
 
 loads_ok( 'File::ChangeNotify::Watcher::Default', undef );
