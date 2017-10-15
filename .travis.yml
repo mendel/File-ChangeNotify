@@ -31,9 +31,6 @@ matrix:
     - env: COVERAGE=1
       perl: '5.24'
       os: osx
-  exclude:
-    - env: AUTHOR_TESTING=1
-      os: osx
 env:
   global:
     - RELEASE_TESTING=1
