@@ -8,8 +8,6 @@ use File::ChangeNotify;
 sub loads_ok {
     my ( $module, $osname_re ) = @_;
 
-    $osname_re ||= qr/^\Q$^O\E$/;
-
     local $Test::Builder::Level = $Test::Builder::Level + 1;
 
     my $expected_to_succeed = $^O =~ $osname_re;
@@ -23,7 +21,7 @@ sub loads_ok {
     );
 }
 
-loads_ok( 'File::ChangeNotify::Watcher::Default', undef );
+loads_ok( 'File::ChangeNotify::Watcher::Default', qr/./ );
 
 loads_ok( 'File::ChangeNotify::Watcher::Inotify', qr/^linux$/ );
 
