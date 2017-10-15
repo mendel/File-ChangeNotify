@@ -15,3 +15,5 @@ fi
 curl -L https://install.perlbrew.pl | bash
 source ~/perl5/perlbrew/etc/bashrc
 echo 'test -f ~/perl5/perlbrew/etc/bashrc && source ~/perl5/perlbrew/etc/bashrc' >>~/.bashrc
+
+perlbrew switch $TRAVIS_PERL_VERSION
