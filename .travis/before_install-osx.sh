@@ -9,9 +9,13 @@ brew update
 brew install perl
 perl -V
 
+PERLBREW_ROOT=~/perl5
 if [ -d ~/perl5 -a ! -O ~/perl5 ]; then
-	sudo chown -R $USER ~/perl5
+	# apparently the pre-installed (by Travis infra) ~/perl5 and its
+	# subdirs are owned by root ATM
+	PERLBREW_ROOT=~/perl5-local
 fi
+export PERLBREW_ROOT
 
 curl -L https://install.perlbrew.pl | bash
 source ~/perl5/perlbrew/etc/bashrc
