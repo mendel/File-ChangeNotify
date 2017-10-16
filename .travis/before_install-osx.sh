@@ -10,7 +10,7 @@ brew install perl
 perl -V
 
 PERLBREW_ROOT=~/perl5
-if [ -d ~/perl5 -a ! -O ~/perl5 ]; then
+if [ -d $PERLBREW_ROOT -a ! -O $PERLBREW_ROOT ]; then
 	# apparently the pre-installed (by Travis infra) ~/perl5 and its
 	# subdirs are owned by root ATM
 	PERLBREW_ROOT=~/perl5-local
@@ -18,8 +18,8 @@ fi
 export PERLBREW_ROOT
 
 curl -L https://install.perlbrew.pl | bash
-source ~/perl5/perlbrew/etc/bashrc
-echo 'test -f ~/perl5/perlbrew/etc/bashrc && source ~/perl5/perlbrew/etc/bashrc' >>~/.bashrc
+source $PERLBREW_ROOT/perlbrew/etc/bashrc
+echo 'test -f $PERLBREW_ROOT/perlbrew/etc/bashrc && source $PERLBREW_ROOT/perlbrew/etc/bashrc' >>~/.bashrc
 
 perlbrew list
 
