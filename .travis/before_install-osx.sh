@@ -24,3 +24,12 @@ echo 'test -f ~/perl5/perlbrew/etc/bashrc && source ~/perl5/perlbrew/etc/bashrc'
 perlbrew list
 
 perlbrew switch $TRAVIS_PERL_VERSION
+
+# some versions of the pre-installed (by Travis infra) perlbrew perls are
+# broken (Config.pm missing)
+if ! perl -V; then
+	rm -rf "$PERLBREW_ROOT"
+	perlbrew init
+	perlbrew install $TRAVIS_PERL_VERSION
+	perlbrew switch $TRAVIS_PERL_VERSION
+fi
