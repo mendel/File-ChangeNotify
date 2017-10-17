@@ -3,7 +3,7 @@
 set -e
 set +H	# disable !foo style history expansion - no need to quote '!'
 
-install_perlbrew()
+install_perlbrew_and_perl()
 {
 	curl -L https://install.perlbrew.pl | bash
 	source $PERLBREW_ROOT/etc/bashrc
