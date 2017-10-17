@@ -1,6 +1,5 @@
 #!/bin/bash
 
-set -v
 set -e
 set +H	# disable !foo style history expansion - no need to quote '!'
 
