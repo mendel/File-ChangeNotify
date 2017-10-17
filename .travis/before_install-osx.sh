@@ -13,7 +13,11 @@ install_perlbrew_and_perl()
 
 	perlbrew switch $TRAVIS_PERL_VERSION
 	if [ $? -ne 0 ]; then
-		perlbrew install $TRAVIS_PERL_VERSION
+		perl_version=$(perlbrew available | sed -nE 's/^\s*((perl-)?'$TRAVIS_PERL_VERSION'\.\S+).*$/\1/p' | head -1)
+		perlbrew install $perl_version
+
+		perlbrew alias create $perl_version $TRAVIS_PERL_VERSION
+
 		perlbrew switch $TRAVIS_PERL_VERSION
 	fi
 }
@@ -28,6 +32,8 @@ if [ -d $perl5_root -a ! -O $perl5_root ]; then
 	# apparently the pre-installed (by Travis infra) ~/perl5 and its
 	# subdirs are owned by root ATM
 	perl5_root=~/perl5-local
+
+	cp -a ~/perl5 ~/perl5-local
 fi
 export PERLBREW_ROOT=$perl5_root/perlbrew
 
