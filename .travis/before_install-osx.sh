@@ -29,11 +29,12 @@ perl -V
 
 perl5_root=~/perl5
 if [ -d $perl5_root -a ! -O $perl5_root ]; then
-	# apparently the pre-installed (by Travis infra) ~/perl5 and its
-	# subdirs are owned by root ATM
-	perl5_root=~/perl5-local
+	# the pre-installed (by Travis infra) ~/perl5 and its subdirs are owned
+	# by root due to a Travis bug
 
 	cp -a ~/perl5 ~/perl5-local
+
+	perl5_root=~/perl5-local
 fi
 export PERLBREW_ROOT=$perl5_root/perlbrew
 
