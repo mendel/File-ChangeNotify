@@ -11,9 +11,9 @@ install_perlbrew_and_perl()
 
 	perlbrew list
 
-	perlbrew switch $TRAVIS_PERL_VERSION
-	if [ $? -ne 0 ]; then
+	if ! perlbrew switch $TRAVIS_PERL_VERSION; then
 		perl_version=$(perlbrew available | sed -nE 's/^\s*((perl-)?'$TRAVIS_PERL_VERSION'\.\S+).*$/\1/p' | head -1)
+
 		perlbrew install $perl_version
 
 		perlbrew alias create $perl_version $TRAVIS_PERL_VERSION
