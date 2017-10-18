@@ -29,7 +29,7 @@ install_perlbrew_and_perl()
 
 		perl_version=$(perlbrew available | sed -n 's/^[[:space:]]*\(\(perl-\)\{0,1\}'"${TRAVIS_PERL_VERSION//./\\.}"'\.[0-9]\{1,\}\).*$/\1/p' | head -1)
 
-		_run perlbrew install $perl_version
+		_run perlbrew --verbose install $perl_version
 
 		_run perlbrew alias create $perl_version $TRAVIS_PERL_VERSION
 
