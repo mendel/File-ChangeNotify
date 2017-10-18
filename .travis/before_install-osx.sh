@@ -9,8 +9,11 @@ _run()
 
 	echo "$ $*" >&2
 	"$@"
+	local exit_status=$?
 
 	set -e
+
+	return $exit_status
 }
 
 install_perlbrew_and_perl()
