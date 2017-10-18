@@ -24,7 +24,7 @@ install_perlbrew_and_perl()
 	if ! _run perlbrew switch $TRAVIS_PERL_VERSION; then
 		_run perlbrew available
 
-		perl_version=$(perlbrew available | sed -nE 's/^\s*((perl-)?'$TRAVIS_PERL_VERSION'\.\d+).*$/\1/p' | head -1)
+		perl_version=$(perlbrew available | sed -n 's/^[[:space:]]*\(\(perl-\)\?'"${TRAVIS_PERL_VERSION//./\\.}"'\.[0-9]\+\).*$/\1/p' | head -1)
 
 		_run perlbrew install $perl_version
 
