@@ -5,8 +5,12 @@ set +H	# disable !foo style history expansion - no need to quote '!'
 
 _run()
 {
+	set +e
+
 	echo "$ $*" >&2
 	"$@"
+
+	set -e
 }
 
 install_perlbrew_and_perl()
