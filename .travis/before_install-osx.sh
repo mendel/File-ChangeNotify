@@ -49,7 +49,9 @@ _run brew install perl
 _run perl -V
 
 #FIXME debug
-_run ls -l ~/perl5/
+_run ls -l ~/perl5/perlbrew/
+_run ls -l ~/perl5/perlbrew/etc/
+_run ls -l ~/perl5/perlbrew/bin/
 
 perl5_root=~/perl5
 if [ -d $perl5_root -a ! -O $perl5_root ]; then
