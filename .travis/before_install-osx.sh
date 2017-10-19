@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# perl on osx is not a supported language, though Travis does install some perl
+# builds under ~/perl5
+# this file contains some glue and workarounds to make it work
+
 set -e
 set +H	# disable !foo style history expansion - no need to quote '!'
 
@@ -25,6 +29,8 @@ install_perlbrew_and_perl()
 	_run perlbrew list
 
 	if ! _run perlbrew switch $TRAVIS_PERL_VERSION; then
+		echo "# failed to switch perlbrew to $TRAVIS_PERL_VERSION"
+
 		_run perlbrew available
 
 		perl_version=$(perlbrew available | sed -n 's/^[[:space:]]*\(\(perl-\)\{0,1\}'"${TRAVIS_PERL_VERSION//./\\.}"'\.[0-9]\{1,\}\).*$/\1/p' | head -1)
@@ -44,6 +50,8 @@ _run perl -V
 
 perl5_root=~/perl5
 if [ -d $perl5_root -a ! -O $perl5_root ]; then
+	echo "# $perl5_root is owned by a different user"
+
 	# the pre-installed (by Travis infra) ~/perl5 and its subdirs are owned
 	# by root due to a Travis bug
 
@@ -58,6 +66,8 @@ install_perlbrew_and_perl
 # some versions of the pre-installed (by Travis infra) perlbrew perls are
 # broken (Config.pm missing)
 if ! perl -V; then
+	echo "# perl -V failed - the perl installation is broken - removing $perl5_root and installing from scratch"
+
 	_run rm -rf "$perl5_root"
 
 	install_perlbrew_and_perl
