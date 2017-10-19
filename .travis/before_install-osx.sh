@@ -48,6 +48,9 @@ _run brew update
 _run brew install perl
 _run perl -V
 
+#FIXME debug
+ls -l ~/perl5/
+
 perl5_root=~/perl5
 if [ -d $perl5_root -a ! -O $perl5_root ]; then
 	echo "# $perl5_root is owned by a different user"
