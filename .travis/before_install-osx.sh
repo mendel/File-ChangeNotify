@@ -35,8 +35,7 @@ install_perlbrew_and_perl()
 
 		perl_version=$(perlbrew available | sed -n 's/^[[:space:]]*\(\(perl-\)\{0,1\}'"${TRAVIS_PERL_VERSION//./\\.}"'\.[0-9]\{1,\}\).*$/\1/p' | head -1)
 
-		#_run travis_wait 60 perlbrew install $perl_version
-		_run travis_wait 60 perlbrew -v install $perl_version
+		_run travis_wait 60 perlbrew install $perl_version
 
 		_run perlbrew list
 
