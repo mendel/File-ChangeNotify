@@ -38,6 +38,8 @@ install_perlbrew_and_perl()
 		#_run travis_wait 60 perlbrew install $perl_version
 		_run travis_wait 60 perlbrew -v install $perl_version
 
+		_run perlbrew list
+
 		_run perlbrew alias create $perl_version $TRAVIS_PERL_VERSION
 
 		_run perlbrew switch $TRAVIS_PERL_VERSION
