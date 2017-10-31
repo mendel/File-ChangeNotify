@@ -21,7 +21,7 @@ perl:
   - '5.12'
   - '5.10'
   - '5.8'
-#matrix:
+matrix:
 #  allow_failures:
 #    - perl: blead
 #  include:
@@ -31,6 +31,19 @@ perl:
 #    - env: COVERAGE=1
 #      perl: '5.24'
 #      os: osx
+  exclude:
+      # perlbrew cannot compile these versions of Perl on osx
+    - perl: '5.8'
+      os: osx
+    - perl: '5.10'
+      os: osx
+    - perl: '5.12'
+      os: osx
+    - perl: '5.14'
+      os: osx
+      # "dev" is unknown to perlbrew on osx
+    - perl: dev
+      os: osx
 env:
   global:
     - RELEASE_TESTING=1
